@@ -1,41 +1,48 @@
 {
-    "api": {
-        "Postagram": {
-            "service": "AppSync",
-            "providerPlugin": "awscloudformation",
-            "output": {
-                "authConfig": {
-                    "additionalAuthenticationProviders": [
-                        {
-                            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-                            "userPoolConfig": {
-                                "userPoolId": "authpostagramcc8cdf2a"
-                            }
-                        }
-                    ],
-                    "defaultAuthentication": {
-                        "authenticationType": "API_KEY",
-                        "apiKeyConfig": {
-                            "description": "public",
-                            "apiKeyExpirationDays": "365"
-                        }
-                    }
-                }
+  "api": {
+    "Postagram": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authpostagramcc8cdf2a"
+              }
             }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "description": "public",
+              "apiKeyExpirationDays": "365"
+            }
+          }
         }
-    },
-    "auth": {
-        "postagramcc8cdf2a": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        }
-    },
-    "storage": {
-        "images": {
-            "service": "S3",
-            "providerPlugin": "awscloudformation"
-        }
+      }
     }
+  },
+  "auth": {
+    "postagramcc8cdf2a": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "images": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
+    }
+  }
 }
